@@ -29,7 +29,7 @@ app.get(
         const isUserExits = await User.findOne({ email: req.user.emails[0].value })
         if (isUserExits) {
             const token = jwt.sign({ userId: isUserExits._id }, "JWT_SECRET", { expiresIn: '7d' });
-            res.redirect(`http://localhost:4200/callback?token=${token}`)
+            res.redirect(`https://task-fleet.vercel.app/callback?token=${token}`)
         }
         else {
             console.log(req.user);
@@ -43,7 +43,7 @@ app.get(
             await user.save();
             console.log(user);
             const token = jwt.sign({ userId: user._id }, "JWT_SECRET", { expiresIn: '7d' });
-            res.redirect(`http://localhost:4200/callback?token=${token}`)
+            res.redirect(`https://task-fleet.vercel.app/callback?token=${token}`)
         }
     }
 );
